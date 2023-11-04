@@ -6,7 +6,7 @@ This Telegram bot allows you to fetch text-only posts from Reddit's popular page
 
 - [No Install Use](#no-install-use)
 - [Prerequisites](#prerequisites)
-- [Getting Started (Self)](#getting-started-(self))
+- [Getting Started-Self](#getting-started-self)
 - [Commands](#commands)
 - [Contributing](#contributing)
 
@@ -22,7 +22,7 @@ Before you can use this bot, you need to have the following:
 - A Telegram bot token. You can create one by talking to the [BotFather](https://core.telegram.org/bots#botfather) on Telegram.
 - Reddit API credentials (client ID, client secret, and user agent). You can obtain these by registering your bot as an application on Reddit.
 
-## Getting Started (Self)
+## Getting Started-Self
 
 1. Clone this repository or download the code to your local machine.
 
