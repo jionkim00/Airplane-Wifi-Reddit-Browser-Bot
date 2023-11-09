@@ -37,16 +37,15 @@ Before you can use this bot, you need to have the following:
 ## Commands
 Commands you can use with the bot:
 
-- /start: Activate the bot and start fetching posts.
-
-- /next: Fetch the next set of text-only posts from Reddit's popular page.
-
-- /help: Get information about the bot commands.
+- `/start`: Activate the bot and start fetching posts.
+- `/fetchreddit`: Fetch the latest text posts from Reddit's popular page.
+- `/next`: Fetch the next set of text posts.
+- `/help`: Get information about the bot commands.
 
 ## Contributing
 Contributions to this project are welcome! If you have any improvements or bug fixes to suggest, please feel free to open an issue (preferred) or submit a pull request.
 
 Here is a list of things that I personally wish to implement:
-- Browse comments in a similar manner (specify which post to view comments of or go down one by one for posts)
+- add ability to specify subreddit instead of just browsing 'all'
 - View upvotes
-- r/askreddit and similar subreddits to be formatted for easy viewing
+- Browse comments in a similar manner (specify which post to view comments of or go down one by one for posts)
