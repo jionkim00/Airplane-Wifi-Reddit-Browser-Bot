@@ -38,7 +38,7 @@ Before you can use this bot, you need to have the following:
 Commands you can use with the bot:
 
 - `/start`: Activate the bot and start fetching posts.
-- `/fetchreddit`: Fetch the latest text posts from Reddit's popular page.
+- `/fetchreddit [subreddit]`: Fetch the latest text posts from a specified subreddit (default is 'all').
 - `/next`: Fetch the next set of text posts.
 - `/help`: Get information about the bot commands.
 
