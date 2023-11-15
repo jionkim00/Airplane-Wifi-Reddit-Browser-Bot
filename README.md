@@ -46,5 +46,4 @@ Commands you can use with the bot:
 Contributions to this project are welcome! If you have any improvements or bug fixes to suggest, please feel free to open an issue (preferred) or submit a pull request.
 
 Here is a list of things that I personally wish to implement:
-- View upvotes
 - Browse comments in a similar manner (specify which post to view comments of or go down one by one for posts)
