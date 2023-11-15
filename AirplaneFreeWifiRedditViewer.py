@@ -17,6 +17,11 @@ TELEGRAM_TOKEN = '6905195665:AAFA8SaN7-BYR7l_3XvlJmZe_WDf3hnDc3c'
 # Dictionary for pagination / last post ID 
 last_post_id = {}
 
+def send_long_message(chat_id, text, context):
+    """Splits long messages and sends them separately to avoid the message length limit."""
+    MAX_MESSAGE_LENGTH = 4096
+    for x in range(0, len(text), MAX_MESSAGE_LENGTH):
+        context.bot.send_message(chat_id=chat_id, text=text[x:x+MAX_MESSAGE_LENGTH])
 
 def fetch_subreddit_posts(update, context, subreddit_name, next_page=False):
     chat_id = update.effective_chat.id
@@ -27,18 +32,21 @@ def fetch_subreddit_posts(update, context, subreddit_name, next_page=False):
     text_posts = [post for post in posts if not post.is_video and "image" not in post.url and "imgur" not in post.url][:5]
 
     for index, post in enumerate(text_posts, 1):
-        # Send post title and URL
-        context.bot.send_message(chat_id=chat_id, text=f"Post #{index}:\n{post.title}\n{post.url}")
+        post_message = f"Post #{index}:\nTitle: {post.title}\nUpvotes: {post.score}\nURL: {post.url}"
+        send_long_message(chat_id, post_message, context)
+        
         post.comment_sort = 'best'
         post.comments.replace_more(limit=0)
         comments = post.comments.list()[:5]
-        # Format and send top comments
-        comments_text = "\n".join([f"{idx}. {comment.body}" for idx, comment in enumerate(comments, 1)])
-        context.bot.send_message(chat_id=chat_id, text=f"Top comments for post #{index}:\n{comments_text}")
+        comments_text = "\n".join([f"{idx}. {comment.body} - {comment.score} upvotes" for idx, comment in enumerate(comments, 1)])
+        
+        if comments_text:
+            send_long_message(chat_id, f"Top comments for Post #{index}:\n{comments_text}", context)
+        else:
+            context.bot.send_message(chat_id=chat_id, text="No comments to display.")
 
     if text_posts:
         last_post_id[chat_id] = text_posts[-1].fullname
-
 
 def fetch_reddit(update: Update, context: CallbackContext) -> None:
     args = context.args
@@ -77,7 +85,6 @@ def main() -> None:
 
     updater.start_polling()
     updater.idle()
-
 
 if __name__ == '__main__':
     main()
